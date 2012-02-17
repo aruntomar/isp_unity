@@ -1,0 +1,33 @@
+For reference of the commands http://lartc.org/
+
+1) Read Json file and build json object of all ISP's
+   Execute step2 to step4 for all the ISP's
+2) Make the entry in rt_tables for ISP's
+3) Add route 
+  # Set a route table for particular ISP
+  ip route add $P1_NET dev $IF1 src $IP1 table T1(tata)
+  ip route add default via $P1_NET table T1
+
+  # For manual check if route is added properly:
+    Execute following command:
+      ip route show table tata which gives output as
+ 
+      default via 61.17.193.1 dev eth0
+      61.17.193.0/24 dev eth0  scope link  src 61.17.193.163
+
+4) Add rule for IP table
+    ip rule add from $IP1 table T1
+
+5) Check ISP is in online are not
+
+6) Fire Load balancing query across ISP's which are in online
+    # For more than one gateway.
+    # If there is no state change ISP's then don't follwing query.
+    # else fire following query: 
+    /sbin/ip route replace default scope global  nexthop via "source ip of the interface"
+dev eth0 weight 1  nexthop via "ip gateway" dev "interface name" weight "weightage"
+
+    #and flush IP routing table cache by following command
+      ip route flush table cache
+   # If there is only one ISP 
+      ip route replace default via "ip gateway" dev "interface name"
