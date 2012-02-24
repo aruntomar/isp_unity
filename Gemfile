@@ -4,5 +4,4 @@ source "http://rubygems.org"
 gemspec
 
 gem 'log4r'
-gem 'rspec-core'
-gem 'rspec-expectations'
+gem 'rspec'
