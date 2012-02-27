@@ -1,8 +1,8 @@
-class ISP
+class Isp
 
   attr_accessor :id, :name, :interface, :gateway, :subnet, :network, :online, :enabled
   
-  def initialize(config_isp = {})
+  def initialize(config_isp)
     @id = config_isp['id']
     @name = config_isp['name']
     @interface = config_isp['interface']
@@ -12,6 +12,5 @@ class ISP
     @online = config_isp["online"]
     @enabled = config_isp['enabled']
   end
-  
 
 end
