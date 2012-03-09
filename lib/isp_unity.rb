@@ -1,11 +1,13 @@
 require 'json'
-require './isp_unity/isp'
-require './isp_unity/version'
-require './isp_unity/routing_table'
+require 'lib/isp_unity_log'
+require 'lib/isp_unity/isp'
+require 'lib/isp_unity/version'
+require 'lib/isp_unity/routing_table'
+
 
 module IspUnity
   
-  ConfigFilePath = '../config/sample.json'
+  ConfigFilePath = './config/sample.json'
   RoutingTablePath = '/etc/iproute2/rt_tables'
 
   class IspUnityException < Exception
