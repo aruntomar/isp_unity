@@ -1,3 +1,8 @@
-Run main.rb as root user
+IspUnity Execution:
 
+  - change working directory into isp_unity
+  - Log into IRB console
+  - Type following commands 
 
+    1. $: << "."
+    2. require  'lib/isp_unity'
