@@ -3,6 +3,7 @@
  "status":"balancing",
  "interval":300,
  "public_dns":["8.8.8.8","8.8.4.4","4.2.2.2","4.2.2.1"],
+ "log_level":0,
  "isp": [
 	   {	
 	   	"id":"isp1",
