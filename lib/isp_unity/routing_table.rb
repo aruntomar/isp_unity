@@ -32,8 +32,10 @@ module IspUnity
         IspUnityLog.error(I18n.t('file.read.no_isp_found'))
       end
 
+
       routing_table = File.read(RoutingTablePath)
       IspUnityLog.info(I18n.t('routing_table.read.success'))
+      system("sudo chmod 666 #{RoutingTablePath}")
       begin
         @isp_config_list.each do|isp_list|
           unless routing_table.include?(isp_list.name)
@@ -41,7 +43,9 @@ module IspUnity
           end
           IspUnityLog.info(I18n.t('isp.created'))
         end
+        system("sudo chmod 644 #{RoutingTablePath}")
       rescue Exception => e
+        system("sudo chmod 644 #{RoutingTablePath}")
         IspUnityLog.debug("#{e}")
         IspUnityLog.error(I18n.t('routing_table.read.error'))
         raise IspUnityException.new(I18n.t('routing_table.read.error'))
