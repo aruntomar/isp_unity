@@ -5,9 +5,21 @@ en:
       error: 'Configuration file is corrupted!!'
       no_isp: 'No Isp found in configuration file!!'
     enter_isp: 'Please enter configuration of ISP'
+    write: "New Isp's successfully added  to rt_table"
   isp:
     created: 'Isp Object succesfully created!'
   routing_table:
     read:
       success: 'Routing Rable file successfully read!'
       error: 'Error while writing to routing table'
+  route:
+    build_commands: 'Route commands successfully built'
+  rule:
+    build_commands: 'Rule commands successfully built'
+  system_call:
+    execute:
+      error: 'Error while executing commands!!'
+      route:
+        success: 'Successfully created routes'
+      rule:
+        success: 'Successfully created rules'

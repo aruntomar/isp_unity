@@ -3,15 +3,16 @@
 
 class Route
 
-  def build_command(isps=[])
-    execute {isps.each {
-      |isp| system("ip route add #{isp[:network]} dev #{isp[:interface]} src #{isp[:gateway]} table #{isp[:name]}")
-    }}
+  class << self
+    
+    attr_reader :commands
+    
+    def build_commands(isps=[])
+      @commands = []
+      isps.each {
+        |isp| commands << "ip route add #{isp.network} dev #{isp.interface} src #{isp.gateway} table #{isp.name}"
+      }
+    end
   end
 
-  private 
-
-  def execute(&block)
-    SystemCall.new.execute &block
-  end
 end
