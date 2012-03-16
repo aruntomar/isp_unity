@@ -10,4 +10,7 @@ if SystemCall.execute(Route.commands)
   IspUnityLog.info(I18n.t('rule.build_commands'))
   SystemCall.execute(Rule.commands)
   IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
+  LoadBalance.build_commands(IspUnity.isp_config_list)
+  SystemCall.execute(LoadBalance.commands)
+  IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
 end
