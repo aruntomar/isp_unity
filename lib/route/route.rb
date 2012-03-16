@@ -9,9 +9,10 @@ class Route
     
     def build_commands(isps=[])
       @commands = []
-      isps.each {
-        |isp| commands << "ip route add #{isp.network} dev #{isp.interface} src #{isp.ip_address} table #{isp.name}"
-      }
+      isps.each do |isp|
+        commands << "ip route add #{isp.network} dev #{isp.interface} src #{isp.ip_address} table #{isp.name}"
+        commands << "ip route add default via #{isp.gateway} table #{isp.name}"
+      end
     end
   end
 

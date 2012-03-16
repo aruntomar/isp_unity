@@ -1,6 +1,6 @@
 class Isp
 
-  attr_accessor :id, :name, :interface, :gateway, :subnet, :network, :online, :enabled, :ip_address
+  attr_accessor :id, :name, :interface, :gateway, :subnet, :network, :online, :enabled, :ip_address, :weight
   
   def initialize(config_isp)
     @id = config_isp['id']
@@ -12,6 +12,7 @@ class Isp
     @online = config_isp["online"]
     @enabled = config_isp['enabled']
     @ip_address = config_isp['ip_address']
+    @weight = config_isp['weight']
   end
 
 end
