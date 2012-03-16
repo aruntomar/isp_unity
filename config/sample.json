@@ -19,7 +19,7 @@
  	   {    
 	   	"id":"isp2",
 		"name":"ttml",
-		"interface":"eth1",
+		"interface":"eth2",
 		"gateway":"192.168.0.2",
 		"subnet":"255.255.255.0",
 		"network":"192.168.0.0/24",
