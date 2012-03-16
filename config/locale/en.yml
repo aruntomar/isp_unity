@@ -1,4 +1,5 @@
 en:
+  no_ip_addr: 'No ip address found!!'
   file:
     read:
       success: 'Configuration file successfully read'

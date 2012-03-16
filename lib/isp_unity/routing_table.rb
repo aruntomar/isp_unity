@@ -24,7 +24,14 @@ module IspUnity
 
       if no_of_isp
         isp_list.each do|data|
-          @isp_config_list.push(Isp.new(data))
+          ip_addr = SystemCall.get_ip(data['interface'].to_s)
+          if ip_addr
+            data['ip_address'] = SystemCall.get_ip(data['interface'])
+            @isp_config_list.push(Isp.new(data))
+          else
+            puts I18n.t('no_ip_addr')
+            IspUnityLog.error(I18n.t('no_ip_addr'))
+          end
         end
         IspUnityLog.info('Isp Object succesfully created!')
       else
