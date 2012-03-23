@@ -13,7 +13,7 @@
 		"subnet":"255.255.255.0",
 		"network":"61.17.193.0/24",
 		"weight":1,
-		"activated":"true",
+		"enabled":"true",
 		"online":"true"
 	   },
  	   {    
@@ -24,7 +24,7 @@
 		"subnet":"255.255.255.0",
 		"network":"192.168.0.0/24",
 		"weight":1,
-		"activated":"true",
+		"enabled":"true",
 		"online":"true"
 	   },
  	   {
@@ -35,7 +35,7 @@
 		"subnet":"255.255.255.0",
 		"network":"192.168.2.0/24",
 		"weight":1,
-		"activated":"true",
+		"enabled":"true",
 		"online":"true"
 	   }
 	]

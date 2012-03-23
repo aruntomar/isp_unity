@@ -19,7 +19,7 @@ class LoadBalance
 
     def is_alive(isp)
       return false unless isp.enabled == 'true'
-      result = `"/bin/ping -c 3 -I #{isp.ip_address} #{$ip_cluster.sample}"`
+      result = `/bin/ping -c 3 -I #{isp.ip_address} #{$ip_cluster.sample}`
       if result.match("100% packet loss")
           return false
       else
