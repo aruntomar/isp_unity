@@ -16,6 +16,7 @@ class SystemCall
     end
 
     def get_ip(interface)
+      return '127.0.0.1' if ENV['GEM_ENV'] == 'test'
       begin
         result = `/sbin/ifconfig #{interface}`
         ip = /inet addr:(?<ip>(\d+[.]){3}\d+)/.match(result)

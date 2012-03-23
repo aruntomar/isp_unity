@@ -5,5 +5,5 @@ development:
 
 test:
   ubuntu:
-    rt_table_table: 'spec/rt_tables'
-    config_file_path: 'spec/config/sample.json'
+    rt_table_path: './spec/rt_tables'
+    config_file_path: './spec/config/sample.json'

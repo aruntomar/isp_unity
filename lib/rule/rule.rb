@@ -7,10 +7,9 @@ class Rule
     def build_commands(isps=[])
       @commands = []
       isps.each do |isp|
-        commands << "ip rule add from #{isp.gateway} table #{isp.name}"
+        @commands << "ip rule add from #{isp.gateway} table #{isp.name}"
       end
+      @commands
     end
-  
   end
-
 end
