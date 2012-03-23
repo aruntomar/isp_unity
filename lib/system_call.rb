@@ -2,7 +2,11 @@ class SystemCall
   class << self
     def execute(commands=[])
       begin
-        commands.each {|cmd| `#{cmd}`} 
+        if commands.is_a?(Array)
+          commands.each {|cmd| `#{cmd}`} 
+        else
+          `#{commands}`
+        end
         return true
       rescue Exception => e
         IspUnityLog.debug("#{e}")
@@ -13,8 +17,8 @@ class SystemCall
 
     def get_ip(interface)
       begin
-        result = `'/sbin/ifconfig' #{interface}`
-        ip = /\inet addr:(?<ip>(\d+[.]){3}\d+)/.match(result)
+        result = `/sbin/ifconfig #{interface}`
+        ip = /inet addr:(?<ip>(\d+[.]){3}\d+)/.match(result)
         ip = ip[0].split(':')[1] if ip
       rescue Exception => e
         IspUnityLog.debug("#{e}")
@@ -23,4 +27,12 @@ class SystemCall
       end
     end
   end
+
+  class IspUnityException < Exception
+    def initialize(message)
+      message = message['error'] if message.class == Hash
+      super "[IspUnity] #{message}"
+    end
+  end
+
 end

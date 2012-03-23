@@ -4,6 +4,7 @@ I18n.load_path = [path]
 
 module IspUnity
 
+  $ip_cluster = []
   class << self
 
     attr_reader :isp_config_list
@@ -21,6 +22,7 @@ module IspUnity
       @isp_config_list = [] 
       no_of_isp = configurations['no_of_isp']
       isp_list = configurations['isp']
+      $ip_cluster = configurations['public_dns']
 
       if no_of_isp
         isp_list.each do|data|

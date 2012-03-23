@@ -9,7 +9,7 @@
 	   	"id":"isp1",
 		"name":"tata",
 		"interface":"eth0",
-		"gateway":"61.17.193.163",
+		"gateway":"61.17.193.1",
 		"subnet":"255.255.255.0",
 		"network":"61.17.193.0/24",
 		"weight":1,
