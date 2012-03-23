@@ -17,6 +17,8 @@ en:
     build_commands: 'Route commands successfully built'
   rule:
     build_commands: 'Rule commands successfully built'
+  load_balance:
+    build_commands: 'Load Balancing commands successfully built'
   system_call:
     execute:
       error: 'Error while executing commands!!'
@@ -24,3 +26,5 @@ en:
         success: 'Successfully created routes'
       rule:
         success: 'Successfully created rules'
+      load_balance:
+        success: 'Successfully load balancing done'
