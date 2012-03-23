@@ -5,8 +5,8 @@ require "isp_unity/version"
 Gem::Specification.new do |s|
   s.name        = "isp_unity"
   s.version     = IspUnity::VERSION
-  s.authors     = ["pratik"]
-  s.email       = ["pratik@joshsoftware.com"]
+  s.authors     = ["Pratik Shah", "Siva Gollapalli"]
+  s.email       = ["pratik14shah@gmail.com", "sivagollapalli@yahoo.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
