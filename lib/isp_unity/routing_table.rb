@@ -1,5 +1,5 @@
 require 'i18n'
-path = File.join([Dir.pwd, 'config', 'locale', 'en.yml'])
+path = File.join([[File.expand_path(File.dirname(__FILE__)), '../..', 'config', 'locale', 'en.yml']])
 I18n.load_path = [path]
 
 module IspUnity

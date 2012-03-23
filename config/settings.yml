@@ -1,7 +1,7 @@
 development:
   ubuntu:
     rt_table_path: '/etc/iproute2/rt_tables'
-    config_file_path: './config/sample.json'
+    config_file_path: 'config/sample.json'
 
 test:
   ubuntu:
