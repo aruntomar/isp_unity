@@ -26,5 +26,40 @@ module IspUnity
     end
   end
 
+  class << self
+
+    def setup
+      IspUnity.config
+      IspUnityLog.info(I18n.t('file.write'))
+      Route.build_commands(IspUnity.isp_config_list)
+      IspUnityLog.info(I18n.t('route.build_commands'))
+      if SystemCall.execute(Route.commands)
+        IspUnityLog.info(I18n.t('system_call.execute.route.success'))
+        Rule.build_commands(IspUnity.isp_config_list)
+        IspUnityLog.info(I18n.t('rule.build_commands'))
+        SystemCall.execute(Rule.commands)
+        IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
+        LoadBalance.build_commands(IspUnity.isp_config_list)
+        IspUnityLog.info(I18n.t('load_balance.build_commands'))
+        SystemCall.execute(LoadBalance.commands)
+        IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+      end
+    end
+
+    def monitor
+      IspUnity.isp_config_list.each do |isp|
+        new_list << isp  if LoadBalance.is_alive(isp) 
+      end
+      unless  new_list == isp_config_list
+        LoadBalance.build_commands(IspUnity.isp_config_list)
+        IspUnityLog.info(I18n.t('load_balance.build_commands'))
+        SystemCall.execute(LoadBalance.commands)
+        IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+        SystemCall.execute('ip route flush cache')
+      end
+
+    end
+  end
+
 end
 
