@@ -1,8 +1,31 @@
-IspUnity Execution:
+1.Install rvm
 
-  - change working directory into isp_unity
-  - Log into IRB console
-  - Type following commands 
+        curl -L get.rvm.io | bash -s stable
+        source /etc/profile.d/rvm.sh
 
-    1. $: << "."
-    2. require  'lib/isp_unity'
+Find the requirements;
+
+        rvm requirements
+
+install the additional dependencies as mentioned. 
+
+2. Install ruby
+        rvm install 1.9.3
+
+3. cd /opt
+
+4. Install IspUnity ( make sure you have git installed)
+
+        git clone git://github.com/aruntomar/isp_unity.git
+
+4. cd /opt/isp_unity
+
+5. bundle install
+
+6. cp -v config/sample.json config/sample.json.bak
+
+7. modify the json file to suit your network. 
+
+8. Ruby ispunity
+        ruby setup.rb
+
