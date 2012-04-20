@@ -22,7 +22,7 @@ install the additional dependencies as mentioned.
 
 5. bundle install
 
-6. cp -v config/sample.json config/sample.json.bak
+6. cp -v config/configuration.json.example config/configuration.json
 
 7. modify the json file to suit your network. 
 
