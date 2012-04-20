@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = IspUnity::VERSION
   s.authors     = ["Pratik Shah", "Siva Gollapalli", "Arun Tomar"]
   s.email       = ["pratik14shah@gmail.com", "sivagollapalli@yahoo.com", "arun@solutionenterprises.co.in"]
-  s.homepage    = "www.ispunity.com"
+  s.homepage    = "http://www.ispunity.com"
   s.summary     = %q{IspUnity is a open source framework, build to integrate (load balance & failover) multiple internet connections simultaneously}
   s.description = %q{With IspUnity, you can 1.Use multiple internet connections simultaneously and get all their throughput. 2.Automatic failover on working net connection if any on of the internet connection goes down.}
 
