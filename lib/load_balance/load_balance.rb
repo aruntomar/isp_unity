@@ -7,10 +7,10 @@ class LoadBalance
       @commands = []
       alive_isps = []
       isps.each do |isp|
-	 alive_isps << isp
+	 alive_isps << isp if is_alive(isp) 
       end
       if alive_isps.size == 1
-        @commands << "/sbin/ip route replace default via #{alive_isps[0].gateway} dev #{alive_isps[0].interface}" if alive_isps[0].enabled
+        @commands << "/sbin/ip route replace default via #{alive_isps[0].gateway} dev #{alive_isps[0].interface}" 
       else
         @commands << "/sbin/ip route replace default scope global "
         alive_isps.each do |isp|
