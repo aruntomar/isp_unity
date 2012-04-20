@@ -6,9 +6,9 @@ class LoadBalance
     def build_commands(isps)
       @commands = []
       if isps.count == 1
-        @commands << "ip route replace default via #{isps[0].gateway} dev #{isps[0].interface}" if isps[0].enabled
+        @commands << "/sbin/ip route replace default via #{isps[0].gateway} dev #{isps[0].interface}" if isps[0].enabled
       else
-        @commands << "ip route replace default scope global "
+        @commands << "/sbin/ip route replace default scope global "
         isps.each do |isp|
           @commands[0] += " nexthop via #{isp.gateway} dev #{isp.interface} weight #{isp.weight} "  if LoadBalance.is_alive(isp) 
         end

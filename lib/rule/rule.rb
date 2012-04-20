@@ -7,8 +7,8 @@ class Rule
     def build_commands(isps=[])
       @commands = []
       isps.each do |isp|
-        output = `ip rule show`
-        @commands << "ip rule add from #{isp.gateway} table #{isp.name}" if output.include?(isp.name)
+        output = `/sbin/ip rule show`
+        @commands << "/sbin/ip rule add from #{isp.gateway} table #{isp.name}" if output.include?(isp.name)
       end
       @commands
     end
