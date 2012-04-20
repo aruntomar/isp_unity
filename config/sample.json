@@ -3,7 +3,7 @@
  "status":"balancing",
  "interval":300,
  "public_dns":["8.8.8.8","8.8.4.4","4.2.2.2","4.2.2.1"],
- "log_level":0,
+ "log_level":1,
  "isp": [
 	   {	
 	   	"id":"isp1",
@@ -35,7 +35,7 @@
 		"subnet":"255.255.255.0",
 		"network":"192.168.2.0/24",
 		"weight":1,
-		"enabled":"true",
+		"enabled":"false",
 		"online":"true"
 	   }
 	]

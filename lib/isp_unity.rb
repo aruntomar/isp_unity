@@ -9,6 +9,7 @@ require 'rule/rule'
 require 'isp_unity/isp'
 require 'isp_unity/version'
 require 'isp_unity/routing_table'
+require 'isp_unity/version'
 
 
 module IspUnity
@@ -47,6 +48,8 @@ module IspUnity
     end
 
     def monitor
+      IspUnity.config
+      new_list = []
       IspUnity.isp_config_list.each do |isp|
         new_list << isp  if LoadBalance.is_alive(isp) 
       end
@@ -57,9 +60,13 @@ module IspUnity
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
         SystemCall.execute('ip route flush cache')
       end
-
     end
-  end
 
+    def version
+      version = "0.0.1"
+    end
+    
+    
+  end
 end
 
