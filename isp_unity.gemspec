@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "isp_unity/version"
 
 Gem::Specification.new do |s|
-  s.name        = "isp_unity"
+  s.name        = "ispunity"
   s.version     = IspUnity::VERSION
   s.authors     = ["Pratik Shah", "Siva Gollapalli"]
   s.email       = ["pratik14shah@gmail.com", "sivagollapalli@yahoo.com"]
