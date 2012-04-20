@@ -61,12 +61,11 @@ module IspUnity
         SystemCall.execute('ip route flush cache')
       end
     end
-
+    
     def version
-      version = "0.0.1"
+      version = "0.0.2"
     end
-    
-    
+
   end
 end
 
