@@ -1,7 +1,6 @@
 1.Install rvm
-
-        curl -L get.rvm.io | bash -s stable
-        source /etc/profile.d/rvm.sh
+  - curl -L get.rvm.io | bash -s stable
+  - source /etc/profile.d/rvm.sh
 
 Find the requirements;
 
@@ -10,22 +9,43 @@ Find the requirements;
 install the additional dependencies as mentioned. 
 
 2. Install ruby
-        rvm install 1.9.3
+   - rvm install 1.9.3
 
-3. cd /opt
+3. Install
+  3.1 Install from gem
+  ======================
+    1. gem install ispunity
+   
 
-4. Install IspUnity ( make sure you have git installed)
+  3.2 Install from source
+  =======================
+    1. cd /opt
 
-        git clone git://github.com/aruntomar/isp_unity.git
+    2. Install IspUnity ( make sure you have git installed)
+      -  git clone git://github.com/aruntomar/isp_unity.git
 
-4. cd /opt/isp_unity
+    3. cd /opt/isp_unity
 
-5. bundle install
+    4. bundle install
 
-6. cp -v config/configuration.json.example config/configuration.json
+4. Using configuration file
+   - We have provided with sample configuration file under config folder with the name configuration.json.example that must be copied under /etc folder.
+   - cp -v config/configuration.json.example /etc/ispunity.json
 
-7. modify the json file to suit your network. 
+5. modify the json file to suit your network. 
 
-8. Ruby ispunity
-        ruby setup.rb
+6. How to execute
+   - As user root execute the following command 
+   - ispunity
+
+7. Usage
+  ispunity clear_rules  # Clear the rules setup by the routing policy
+  ispunity configfile   # Uses the config file provided/passed to the application
+  ispunity help [TASK]  # Describe available tasks or one specific task
+  ispunity license      # Displays the license
+  ispunity monitor      # Start monitoring the isp connections.
+  ispunity setup        # Setup the application
+  ispunity version      # Displays the version of Ispunity
+
+      
 
