@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+$LOAD_PATH << File.join(File.dirname(__FILE__),'..','lib')
+require 'thor'
+require 'isp_unity'
+
+class Ispunity < Thor
+  desc "version","Displays the version of Ispunity"
+  def version
+    puts '0.0.2'
+  end
+
+  desc "setup","Setup the application"
+  def setup
+    puts "Starting the setup application"
+    IspUnity.setup
+  end
+
+  desc "monitor","Start monitoring the isp connections."
+  def monitor
+    puts "Starting to monitor the application"
+    IspUnity.monitor
+  end
+
+  desc "configfile","Uses the config file provided/passed to the application"
+  method_option :configfile, :aliases => "-c", :desc => "Config file"
+  def configfile(file)
+    puts "Using the config file #{file}"
+  end
+
+  desc "clear_rules","Clear the rules setup by the routing policy"
+  def clear_rules
+    puts 'Clearing the rules.'
+  end
+
+  desc "license","Displays the license"
+  def license
+    File.open("../license",'r') do |f|
+      puts f.readlines
+    end
+  end
+
+end
+
+Ispunity.start
