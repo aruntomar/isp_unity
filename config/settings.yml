@@ -1,9 +1,15 @@
 development:
   ubuntu:
     rt_table_path: '/etc/iproute2/rt_tables'
-    config_file_path: 'config/configuration.json'
+    config_file_path: '/etc/ispunity.json'
 
 test:
   ubuntu:
     rt_table_path: './spec/rt_tables'
     config_file_path: './spec/config/configuration.json'
+
+production:
+  ubuntu:
+    rt_table_path: '/etc/iproute2/rt_tables'
+    config_file_path: '/etc/ispunity.json'
+
