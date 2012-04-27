@@ -4,7 +4,7 @@ require "isp_unity/version"
 
 Gem::Specification.new do |s|
   s.name        = "ispunity"
-  s.version     = "0.0.2" 
+  s.version     = "0.0.3" 
   s.authors     = ["Pratik Shah", "Siva Gollapalli", "Arun Tomar"]
   s.email       = ["pratik14shah@gmail.com", "sivagollapalli@yahoo.com", "arun@solutionenterprises.co.in"]
   s.homepage    = "http://www.ispunity.com"

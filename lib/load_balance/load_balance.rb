@@ -7,11 +7,18 @@ class LoadBalance
       @commands = []
       alive_isps = []
       isps.each do |isp|
-	 alive_isps << isp if is_alive(isp) 
+	 if is_alive(isp) 
+	   alive_isps << isp 
+           IspUnityLog.info("#{isp.name} is online")
+	 else
+           IspUnityLog.info("#{isp.name} is offline")
+	 end
       end
       if alive_isps.size == 1
+        IspUnityLog.info("Only 1 isp is alive")
         @commands << "/sbin/ip route replace default via #{alive_isps[0].gateway} dev #{alive_isps[0].interface}" 
       else
+        IspUnityLog.info("Multiple isps are alive")
         @commands << "/sbin/ip route replace default scope global "
         alive_isps.each do |isp|
           @commands[0] += " nexthop via #{isp.gateway} dev #{isp.interface} weight #{isp.weight} "  
@@ -25,8 +32,10 @@ class LoadBalance
       return false unless isp.enabled == 'true'
       result = `/bin/ping -c 3 -I #{isp.ip_address} #{$ip_cluster.sample}`
       if result.match("100% packet loss")
+           IspUnityLog.info("100% packet loss for #{isp.name}")
           return false
       else
+          IspUnityLog.info("0% packet loss for #{isp.name}")
           return true
       end
     end
