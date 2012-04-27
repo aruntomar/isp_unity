@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.add_dependency("log4r", "~> 1.1.10")
   s.add_dependency("i18n")
   s.add_dependency("json")
+  s.add_dependency("thor")
 
 
   s.rubyforge_project = "ispunity"
