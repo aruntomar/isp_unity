@@ -4,9 +4,10 @@ require 'thor'
 require 'isp_unity'
 
 class Ispunity < Thor
+
   desc "version","Displays the version of Ispunity"
   def version
-    puts '0.0.2'
+    puts "ispunity, version #{IspUnity::VERSION}"
   end
 
   desc "setup","Setup the application"

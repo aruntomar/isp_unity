@@ -9,7 +9,6 @@ require 'rule/rule'
 require 'isp_unity/isp'
 require 'isp_unity/version'
 require 'isp_unity/routing_table'
-require 'isp_unity/version'
 
 
 module IspUnity
@@ -68,11 +67,6 @@ module IspUnity
         SystemCall.execute('ip route flush cache')
       end
     end
-    
-    def version
-      version = "0.0.2"
-    end
-
   end
 end
 
