@@ -19,7 +19,7 @@ class LoadBalance
         @commands << "/sbin/ip route replace default via #{alive_isps[0].gateway} dev #{alive_isps[0].interface}" 
       else
         IspUnityLog.info("Multiple isps are alive")
-        @commands << "/sbin/ip route replace default scope global "
+        @commands << "/sbin/ip route replace equalize default "
         alive_isps.each do |isp|
           @commands[0] += " nexthop via #{isp.gateway} dev #{isp.interface} weight #{isp.weight} "  
         end
