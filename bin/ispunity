@@ -2,6 +2,7 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__),'..','lib')
 require 'thor'
 require 'isp_unity'
+require 'fileutils'
 
 class Ispunity < Thor
 
@@ -38,6 +39,12 @@ class Ispunity < Thor
     File.open("../license",'r') do |f|
       puts f.readlines
     end
+  end
+
+  desc "Copies configuration.json.example file under /etc directory"
+  def copy
+   puts "\t Copies configuration.json.example file under /etc directory \n"
+   FileUtils.cp(File.join([File.expand_path(File.dirname(__FILE__)), 'config', 'configuration.json.example']), File.join("/etc"))
   end
 
 end
