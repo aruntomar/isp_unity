@@ -41,10 +41,11 @@ class Ispunity < Thor
     end
   end
 
-  desc "Copies configuration.json.example file under /etc directory"
+  desc "Copy", "Copies configuration.json.example file under /etc directory as ispunity.json"
   def copy
-   puts "\t Copies configuration.json.example file under /etc directory \n"
+   puts "\t Configuration.json.example file copied under /etc directory as ispunity.json \n"
    FileUtils.cp(File.join([File.expand_path(File.dirname(__FILE__)), 'config', 'configuration.json.example']), File.join("/etc"))
+   File.rename(File.join('/etc', 'configuration.json.example'), File.join('/etc', 'ispunity.json'))
   end
 
 end
