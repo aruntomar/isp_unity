@@ -39,15 +39,15 @@ module IspUnity
       if SystemCall.execute(route_command)
         IspUnityLog.info(I18n.t('system_call.execute.route.success'))
         Rule.build_commands(isp_lists)
-	rule_command = Rule.commands
+        rule_command = Rule.commands
         IspUnityLog.info(I18n.t('rule.build_commands'))
-      	IspUnityLog.debug("Rule Command: #{rule_command}")
+        IspUnityLog.debug("Rule Command: #{rule_command}")
         SystemCall.execute(rule_command)
         IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
         LoadBalance.build_commands(isp_lists)
-	load_balance_command = LoadBalance.commands
+        load_balance_command = LoadBalance.commands
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
-      	IspUnityLog.debug("Load Balance Command: #{load_balance_command}")
+        IspUnityLog.debug("Load Balance Command: #{load_balance_command}")
         SystemCall.execute(load_balance_command)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
       end

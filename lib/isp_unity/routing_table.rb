@@ -10,13 +10,19 @@ module IspUnity
     attr_reader :isp_config_list
 
     def config
-      begin
-        configurations = JSON.parse(File.read(ConfigFilePath))   
-        IspUnityLog.info(I18n.t('file.read.success'))
-      rescue Exception => e
-        IspUnityLog.debug("#{e}")
-        IspUnityLog.error(I18n.t('file.read.error'))
-        raise IspUnityException.new(I18n.t('file.read.error'))
+      # If file is exists then it reads that otherwise log an error 
+      if File.exist?(ConfigFilePath)
+        begin
+          configurations = JSON.parse(File.read(ConfigFilePath))   
+          IspUnityLog.info(I18n.t('file.read.success'))
+        rescue Exception => e
+          IspUnityLog.debug("#{e}")
+          IspUnityLog.error(I18n.t('file.read.error'))
+          raise IspUnityException.new(I18n.t('file.read.error'))
+        end
+      else
+        puts "Please make ensure that configuration file has copied on /etc dir"
+        IspUnityLog.error('Please make ensure that configuration file has copied on /etc dir')
       end
 
       @isp_config_list = [] 
@@ -26,7 +32,7 @@ module IspUnity
 
       if no_of_isp
         isp_list.each do|data|
-	  if data['enabled'] == 'true'
+          if data['enabled'] == 'true'
             ip_addr = SystemCall.get_ip(data['interface'].to_s)
             if ip_addr
               data['ip_address'] = SystemCall.get_ip(data['interface'])
@@ -58,8 +64,6 @@ module IspUnity
         IspUnityLog.error(I18n.t('routing_table.read.error'))
         raise IspUnityException.new(I18n.t('routing_table.read.error'))
       end
-
     end
   end
 end
-
