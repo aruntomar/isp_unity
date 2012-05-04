@@ -33,11 +33,12 @@ class LoadBalance
       result = `/bin/ping -c 3 -I #{isp.ip_address} #{$ip_cluster.sample}`
       if result.match("100% packet loss")
            IspUnityLog.info("100% packet loss for #{isp.name}")
-          return false
+           isp.online = false
       else
           IspUnityLog.info("0% packet loss for #{isp.name}")
-          return true
+          isp.online = true
       end
+      return isp.online 
     end
 
   end
