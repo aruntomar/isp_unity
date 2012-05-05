@@ -64,7 +64,7 @@ module IspUnity
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
         SystemCall.execute(LoadBalance.commands)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
-        SystemCall.execute('ip route flush cache')
+        SystemCall.execute('/sbin/ip route flush cache')
       end
     end
   end
