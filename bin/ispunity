@@ -50,7 +50,7 @@ class Ispunity < Thor
 
   desc "editcron", "Edit crontab"
   def editcron
-   path = `/usr/bin/which ispunity`
+   path = `/usr/bin/which ispunity`.chomp
    puts "Add following line to your crontab to monitor your ISP's for every 5 minutes"
    puts "*/5 * * * * bash -c 'source /etc/profile.d/rvm.sh && /usr/bin/env ruby #{path} monitor"
   end
