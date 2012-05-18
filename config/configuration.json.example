@@ -1,12 +1,8 @@
 {
- "no_of_isp":3,
- "status":"balancing",
- "interval":300,
  "public_dns":["8.8.8.8","8.8.4.4","4.2.2.2","4.2.2.1"],
  "log_level":1,
  "isp": [
 	   {	
-	   	"id":"isp1",
 		"name":"tata",
 		"interface":"eth0",
 		"gateway":"61.17.193.1",
@@ -15,9 +11,13 @@
 		"weight":1,
 		"enabled":"true",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
 	   },
  	   {    
-	   	"id":"isp2",
 		"name":"ttml",
 		"interface":"eth2",
 		"gateway":"192.168.0.2",
@@ -26,9 +26,13 @@
 		"weight":1,
 		"enabled":"true",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
 	   },
  	   {
-	        "id":"isp3",
 		"name":"bsnl",
 		"interface":"wlan0",
 		"gateway":"192.168.2.1",
@@ -37,6 +41,15 @@
 		"weight":1,
 		"enabled":"false",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
+
 	   }
-	]
+	],
+ #Global command for sticky session. By default true
+ "skip_sticky_session":false,
+     
 }
