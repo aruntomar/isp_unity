@@ -45,3 +45,7 @@ Commands for Sticky Session:
 2) ip rule add fwmark #{port} lookup #{table_name}
 
    Depends on port value it tells which ISP will need to lookup 
+
+3) ip rule del fwmark #{port} lookup #{table_name}
+
+  Deletes the rule. After delete the rule we have to add the rule again.

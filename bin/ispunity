@@ -48,6 +48,12 @@ class Ispunity < Thor
    File.rename(File.join('/etc', 'configuration.json.example'), File.join('/etc', 'ispunity.json'))
   end
 
+  desc "cron", "Edit crontab"
+  def editcron
+   path = system("/usr/bin/which ispunity")
+   puts "Add following line to your crontab to monitor your ISP's for every 5 minutes"
+   puts "*/5 * * * * bash -c 'source /etc/profile.d/rvm.sh && /usr/bin/env ruby #{path} monitor"
+  end
 end
 
 Ispunity.start
