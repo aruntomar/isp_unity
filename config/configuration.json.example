@@ -1,12 +1,8 @@
 {
- "no_of_isp":3,
- "status":"balancing",
- "interval":300,
  "public_dns":["8.8.8.8","8.8.4.4","4.2.2.2","4.2.2.1"],
  "log_level":1,
  "isp": [
 	   {	
-	   	"id":"isp1",
 		"name":"tata",
 		"interface":"eth0",
 		"gateway":"61.17.193.1",
@@ -17,7 +13,6 @@
 		"online":"true"
 	   },
  	   {    
-	   	"id":"isp2",
 		"name":"ttml",
 		"interface":"eth2",
 		"gateway":"192.168.0.2",
@@ -28,7 +23,6 @@
 		"online":"true"
 	   },
  	   {
-	        "id":"isp3",
 		"name":"bsnl",
 		"interface":"wlan0",
 		"gateway":"192.168.2.1",

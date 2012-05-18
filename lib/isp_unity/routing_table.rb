@@ -22,11 +22,10 @@ module IspUnity
         end
 
         @isp_config_list = [] 
-        no_of_isp = configurations['no_of_isp']
         isp_list = configurations['isp']
         $ip_cluster = configurations['public_dns']
 
-        if no_of_isp
+        if isp_list 
           isp_list.each do|data|
             if data['enabled'] == 'true'
               ip_addr = SystemCall.get_ip(data['interface'].to_s)
