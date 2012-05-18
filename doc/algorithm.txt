@@ -31,3 +31,17 @@ dev eth0 weight 1  nexthop via "ip gateway" dev "interface name" weight "weighta
       ip route flush table cache
    # If there is only one ISP 
       ip route replace default via "ip gateway" dev "interface name"
+
+Commands for Sticky Session:
+
+1) iptables -t mangle -A PREROUTING -s #{source network} -p #{protocol} --dport #{dport} -j MARK --set-mark #{dport}
+
+   mangle         : Table will be used for packet aleternation
+   PREROUTING     : altering  outgoing  packets before routing
+   source_network : To which network should we need to run the sticky session
+   protocol       : sticky protocols or non-sticky protocols (either TCP or UDP)
+   dport          : Destination port (on which destination port that sticky session is working) and we have mark the packet with some                     value(prefer to use to use dport value as they would be unique)
+   
+2) ip rule add fwmark #{port} lookup #{table_name}
+
+   Depends on port value it tells which ISP will need to lookup 
