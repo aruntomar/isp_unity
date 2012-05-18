@@ -38,33 +38,51 @@ module IspUnity
       IspUnityLog.debug("Route Command: #{route_command}")
       if SystemCall.execute(route_command)
         IspUnityLog.info(I18n.t('system_call.execute.route.success'))
+
+        #RULE COMMAND
         Rule.build_commands(isp_lists)
         rule_command = Rule.commands
         IspUnityLog.info(I18n.t('rule.build_commands'))
         IspUnityLog.debug("Rule Command: #{rule_command}")
         SystemCall.execute(rule_command)
         IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
+
+        #LOAD BALANCE
         LoadBalance.build_commands(isp_lists)
         load_balance_command = LoadBalance.commands
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
         IspUnityLog.debug("Load Balance Command: #{load_balance_command}")
         SystemCall.execute(load_balance_command)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+
+        #Sticky Session
+        StickySession.execute(isp_lists) unless $skip_sticky_session
       end
     end
 
     def monitor
       IspUnity.config
-      new_list = []
+      online_isps = []
       IspUnity.isp_config_list.each do |isp|
-        new_list << isp  if LoadBalance.is_alive(isp) 
+        online_isps << isp  if LoadBalance.is_alive(isp) 
       end
-      unless  new_list == isp_config_list
+
+      #Failover case
+      unless  online_isps == isp_config_list
+
+        #LOAD BALANCE
         LoadBalance.build_commands(IspUnity.isp_config_list)
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
         SystemCall.execute(LoadBalance.commands)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+
+        #Flush route
         SystemCall.execute('/sbin/ip route flush cache')
+
+        #Change sticky session 
+        offline_isps = isp_lists - online_isps
+        StickySession.change_rule(offline_isps, online_isps)
+  
       end
     end
   end

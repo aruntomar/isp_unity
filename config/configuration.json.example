@@ -11,6 +11,11 @@
 		"weight":1,
 		"enabled":"true",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
 	   },
  	   {    
 		"name":"ttml",
@@ -21,6 +26,11 @@
 		"weight":1,
 		"enabled":"true",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
 	   },
  	   {
 		"name":"bsnl",
@@ -31,6 +41,15 @@
 		"weight":1,
 		"enabled":"false",
 		"online":"true"
+        "protocol":"tcp",
+        "port":"80",
+        "network_ip":"",
+        "skip_sticky_session":true,
+        "priority":1
+
 	   }
-	]
+	],
+ #Global command for sticky session. By default true
+ "skip_sticky_session":false,
+     
 }

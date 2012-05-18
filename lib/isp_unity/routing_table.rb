@@ -24,6 +24,8 @@ module IspUnity
         @isp_config_list = [] 
         isp_list = configurations['isp']
         $ip_cluster = configurations['public_dns']
+        $skip_sticky_session = configurations['skip_sticky_session']
+        $priority_for_sticky = configurations[priority_for_sticky].split(',')
 
         if isp_list 
           isp_list.each do|data|
