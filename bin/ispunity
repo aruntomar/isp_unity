@@ -22,7 +22,7 @@ class Ispunity < Thor
     puts "Starting to monitor the application"
     IspUnity.monitor
   end
-
+=begin
   desc "configfile","Uses the config file provided/passed to the application"
   method_option :configfile, :aliases => "-c", :desc => "Config file"
   def configfile(file)
@@ -33,7 +33,7 @@ class Ispunity < Thor
   def clear_rules
     puts 'Clearing the rules.'
   end
-
+=end
   desc "license","Displays the license"
   def license
     File.open("../license",'r') do |f|
@@ -48,8 +48,8 @@ class Ispunity < Thor
    File.rename(File.join('/etc', 'configuration.json.example'), File.join('/etc', 'ispunity.json'))
   end
 
-  desc "editcron", "Edit crontab"
-  def editcron
+  desc "cron", "Displays entry for cron tab"
+  def cron
    path = `/usr/bin/which ispunity`.chomp
    puts "Add following line to your crontab to monitor your ISP's for every 5 minutes"
    puts "*/5 * * * * bash -c 'source /etc/profile.d/rvm.sh && /usr/bin/env ruby #{path} monitor"
