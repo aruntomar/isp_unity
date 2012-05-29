@@ -55,7 +55,6 @@ install the additional dependencies as mentioned.
     
     ii. ispunity monitor     : This will check for the availability of isp connections. If any connection any network connection is down then it will load balance the network traffic on available connections.
  
-    iii.ispunity clear_rules : This command clears the all rules from routing tables. 
 
 Note : We recommend to add cron job for checking the available network connections. Add following into the crontab : 
     */5 * * * * bash -c 'source /etc/profile.d/rvm.sh && /usr/bin/env ruby /usr/local/rvm/gems/ruby-1.9.3-p125/bin/ispunity monitor'

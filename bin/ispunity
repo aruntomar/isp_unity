@@ -13,13 +13,13 @@ class Ispunity < Thor
 
   desc "setup","Setup the application"
   def setup
-    puts "Starting the setup application"
+#    puts "Starting the setup application"
     IspUnity.setup
   end
 
   desc "monitor","Start monitoring the isp connections."
   def monitor
-    puts "Starting to monitor the application"
+#    puts "Starting to monitor the application"
     IspUnity.monitor
   end
 =begin
