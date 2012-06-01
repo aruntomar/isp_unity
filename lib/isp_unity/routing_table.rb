@@ -25,7 +25,7 @@ module IspUnity
         isp_list = configurations['isp']
         $ip_cluster = configurations['public_dns']
         $skip_sticky_session = configurations['skip_sticky_session']
-        $priority_for_sticky = configurations['priority_for_sticky'].split(',')
+        $priority_for_sticky = configurations['priority_for_sticky'].split(',') if configurations['priority_for_sticky']
 
         if isp_list 
           isp_list.each do|data|
@@ -45,7 +45,6 @@ module IspUnity
           raise IspUnityException.new(I18n.t('file.enter_isp'))
           IspUnityLog.error(I18n.t('file.read.no_isp_found'))
         end
-
 
         routing_table = File.read(RoutingTablePath)
         IspUnityLog.info(I18n.t('routing_table.read.success'))

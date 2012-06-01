@@ -51,5 +51,9 @@
 	],
  #Global command for sticky session. By default true
  "skip_sticky_session":false,
+ #For following comma seperated Isp's name sticky session will be executed
+ "priority_for_sticky":"tata,ttml"
+     
+
      
 }
