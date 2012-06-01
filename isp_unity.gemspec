@@ -5,7 +5,7 @@ require "isp_unity/version"
 
 Gem::Specification.new do |s|
   s.name        = "ispunity"
-  s.version     = IspUnity::VERSION 
+  s.version     = IspUnity::VERSION
   s.authors     = ["Pratik Shah", "Siva Gollapalli", "Arun Tomar"]
   s.email       = ["pratik14shah@gmail.com", "sivagollapalli@yahoo.com", "arun@solutionenterprises.co.in"]
   s.homepage    = "http://www.ispunity.com"
@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.add_dependency("i18n")
   s.add_dependency("json")
   s.add_dependency("thor")
-  # rspec dependancies are added
-  s.add_dependancy("rspec")
-	
+  # rspec dependency are added
+  s.add_dependency("rspec")
+
   s.rubyforge_project = "ispunity"
 
   s.files         = `git ls-files`.split("\n")
