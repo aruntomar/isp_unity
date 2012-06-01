@@ -15,8 +15,9 @@ Gem::Specification.new do |s|
   s.add_dependency("i18n")
   s.add_dependency("json")
   s.add_dependency("thor")
-
-
+  # rspec dependancies are added
+  s.add_dependancy("rspec")
+	
   s.rubyforge_project = "ispunity"
 
   s.files         = `git ls-files`.split("\n")
