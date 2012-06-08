@@ -2,6 +2,7 @@ $LOAD_PATH <<  File.expand_path(File.dirname(__FILE__))
 require 'json'
 require 'yaml'
 require 'isp_unity_log'
+require 'sticky_session'
 require 'route/route'
 require 'load_balance/load_balance'
 require 'system_call'

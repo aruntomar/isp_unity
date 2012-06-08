@@ -5,7 +5,7 @@
 	   {	
 		"name":"tata",
 		"interface":"eth0",
-		"gateway":"61.17.193.1",
+		"gateway":"192.168.3.6",
 		"subnet":"255.255.255.0",
 		"network":"61.17.193.0/24",
 		"weight":1,
@@ -49,11 +49,6 @@
 
 	   }
 	],
- #Global command for sticky session. By default true
- "skip_sticky_session":false,
- #For following comma seperated Isp's name sticky session will be executed
+ "skip_sticky_session":true,
  "priority_for_sticky":"tata,ttml"
-     
-
-     
 }
