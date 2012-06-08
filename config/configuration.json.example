@@ -49,6 +49,6 @@
 
 	   }
 	],
- "skip_sticky_session":true,
+ "skip_sticky_session":false,
  "priority_for_sticky":"tata,ttml"
 }

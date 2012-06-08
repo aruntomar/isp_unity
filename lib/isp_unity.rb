@@ -57,7 +57,7 @@ module IspUnity
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
 
         #Sticky Session
-        StickySession.execute(isp_lists) unless $skip_sticky_session
+        StickySession.execute(isp_lists) if $skip_sticky_session
       end
     end
 
