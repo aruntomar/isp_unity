@@ -10,12 +10,12 @@
 		"network":"61.17.193.0/24",
 		"weight":1,
 		"enabled":"true",
-		"online":"true"
-        "protocol":"tcp",
-        "port":"80",
-        "network_ip":"",
-        "skip_sticky_session":true,
-        "priority":1
+		"online":"true",
+    "protocol":"tcp",
+    "port":"80",
+    "network_ip":"",
+    "skip_sticky_session":true,
+    "priority":1
 	   },
  	   {    
 		"name":"ttml",
@@ -25,12 +25,12 @@
 		"network":"192.168.0.0/24",
 		"weight":1,
 		"enabled":"true",
-		"online":"true"
-        "protocol":"tcp",
-        "port":"80",
-        "network_ip":"",
-        "skip_sticky_session":true,
-        "priority":1
+		"online":"true",
+    "protocol":"tcp",
+    "port":"80",
+    "network_ip":"",
+    "skip_sticky_session":true,
+    "priority":1
 	   },
  	   {
 		"name":"bsnl",
@@ -40,12 +40,12 @@
 		"network":"192.168.2.0/24",
 		"weight":1,
 		"enabled":"false",
-		"online":"true"
-        "protocol":"tcp",
-        "port":"80",
-        "network_ip":"",
-        "skip_sticky_session":true,
-        "priority":1
+		"online":"true",
+    "protocol":"tcp",
+    "port":"80",
+    "network_ip":"",
+    "skip_sticky_session":true,
+    "priority":1
 
 	   }
 	],
