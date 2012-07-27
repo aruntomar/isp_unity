@@ -28,3 +28,6 @@ en:
         success: 'Successfully created rules'
       load_balance:
         success: 'Successfully load balancing done'
+  log_level:
+    success: 'Successfully read log level from configurations'
+    error: 'Failed to read log level from configurations, setting it to default level'

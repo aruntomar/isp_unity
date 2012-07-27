@@ -1,7 +1,19 @@
 $LOAD_PATH <<  File.expand_path(File.dirname(__FILE__))
+
+# required gems and libraries
+require 'rubygems'
+require 'i18n'
 require 'json'
 require 'yaml'
+require 'log4r'
+
+path = File.join([[File.expand_path(File.dirname(__FILE__)), '../', 'config', 'locale', 'en.yml']])
+I18n.load_path = [path]
+
+# loading init data, logger etc 
+require 'isp_unity_init'
 require 'isp_unity_log'
+require 'sticky_session'
 require 'route/route'
 require 'load_balance/load_balance'
 require 'system_call'
@@ -12,19 +24,6 @@ require 'isp_unity/routing_table'
 
 
 module IspUnity
-
-  config_file = File.join([File.expand_path(File.dirname(__FILE__)), '..', 'config', 'settings.yml'])
-  ENV['GEM_ENV'] ||= 'development'
-  PATH = YAML.load_file( config_file )[ENV['GEM_ENV']]['ubuntu']
-  ConfigFilePath =  File.join(PATH['config_file_path'])
-  RoutingTablePath = PATH['rt_table_path'].to_s
-
-  class IspUnityException < Exception
-    def initialize(message)
-      message = message['error'] if message.class == Hash
-      super "[IspUnity] #{message}"
-    end
-  end
 
   class << self
 
@@ -38,33 +37,51 @@ module IspUnity
       IspUnityLog.debug("Route Command: #{route_command}")
       if SystemCall.execute(route_command)
         IspUnityLog.info(I18n.t('system_call.execute.route.success'))
+
+        #RULE COMMAND
         Rule.build_commands(isp_lists)
-	rule_command = Rule.commands
+        rule_command = Rule.commands
         IspUnityLog.info(I18n.t('rule.build_commands'))
-      	IspUnityLog.debug("Rule Command: #{rule_command}")
+        IspUnityLog.debug("Rule Command: #{rule_command}")
         SystemCall.execute(rule_command)
         IspUnityLog.info(I18n.t('system_call.execute.rule.success'))
+
+        #LOAD BALANCE
         LoadBalance.build_commands(isp_lists)
-	load_balance_command = LoadBalance.commands
+        load_balance_command = LoadBalance.commands
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
-      	IspUnityLog.debug("Load Balance Command: #{load_balance_command}")
+        IspUnityLog.debug("Load Balance Command: #{load_balance_command}")
         SystemCall.execute(load_balance_command)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+
+        #Sticky Session
+        StickySession.execute(isp_lists) if $skip_sticky_session
       end
     end
 
     def monitor
       IspUnity.config
-      new_list = []
+      online_isps = []
       IspUnity.isp_config_list.each do |isp|
-        new_list << isp  if LoadBalance.is_alive(isp) 
+        online_isps << isp  if LoadBalance.is_alive(isp) 
       end
-      unless  new_list == isp_config_list
+
+      #Failover case
+      unless  online_isps == isp_config_list
+
+        #LOAD BALANCE
         LoadBalance.build_commands(IspUnity.isp_config_list)
         IspUnityLog.info(I18n.t('load_balance.build_commands'))
         SystemCall.execute(LoadBalance.commands)
         IspUnityLog.info(I18n.t('system_call.execute.load_balance.success'))
+
+        #Flush route
         SystemCall.execute('/sbin/ip route flush cache')
+
+        #Change sticky session 
+        offline_isps = isp_lists - online_isps
+        StickySession.change_rule(offline_isps, online_isps)
+  
       end
     end
   end
